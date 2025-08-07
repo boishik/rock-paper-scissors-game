@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   text-align: center;
+  font-family: "Poppins", sans-serif;
 }
 
 h1 {
@@ -23,6 +24,7 @@ h1 {
 .choice:hover {
   cursor: pointer;
   background-color: black;
+  transform: scale(1.05);
 }
 
 img {
@@ -49,9 +51,27 @@ img {
   gap: 5rem;
 }
 
+.score {
+  width: 160px;
+  height: 120px;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
 #user-score,
 #comp-score {
-  font-size: 4rem;
+  font-size: 3.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.score p:last-child {
+  font-size: 1.2rem;
+  color: #555;
 }
 
 .msg-container {
@@ -72,4 +92,57 @@ img {
 .msg {
   background-color: #081b31;
   color: #fff;
+}
+
+.choice {
+  transition: transform 0.3s ease;
+}
+.choice:hover {
+  transform: scale(1.1);
+  background: radial-gradient(circle, #ffffff22, #00000011);
+}
+
+.score {
+  background-color: #f4f4f4;
+  padding: 1rem 2rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#msg {
+  animation: popIn 0.5s ease;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 600px) {
+  .choices {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .score-board {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .choice,
+  img {
+    width: 120px;
+    height: 120px;
+  }
+
+  #msg {
+    font-size: 1.5rem;
+    padding: 0.75rem;
+  }
 }
