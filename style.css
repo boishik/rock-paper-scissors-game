@@ -1,4 +1,3 @@
-/* ---------- Base ---------- */
 * {
   margin: 0;
   padding: 0;
@@ -23,7 +22,7 @@ body {
   }
 }
 
-/* ---------- Title ---------- */
+/* Title */
 h1 {
   background-color: #081b31;
   color: #fff;
@@ -31,12 +30,12 @@ h1 {
   line-height: 5rem;
 }
 
-/* ---------- Choices (always one row) ---------- */
+/*Choices */
 .choices {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: nowrap; /* never wrap */
+  flex-wrap: nowrap;
   gap: clamp(8px, 4vw, 24px);
   padding-inline: clamp(8px, 4vw, 24px);
   margin-top: 3rem;
@@ -44,7 +43,7 @@ h1 {
 
 .choice {
   flex: 0 0 auto;
-  width: clamp(76px, 26vw, 170px); /* auto-shrink on phones */
+  width: clamp(76px, 26vw, 170px);
   height: clamp(76px, 26vw, 170px);
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.15);
@@ -53,14 +52,14 @@ h1 {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  border: 5px solid transparent;
+  border: 7px solid transparent;
   transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .choice:hover {
   transform: translateY(-5px) scale(1.05);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  border-color: #dbe2e6; /* soft blue hover border */
+  border-color: #dbe2e6;
 }
 .choice:active {
   transform: scale(0.98);
@@ -73,14 +72,14 @@ h1 {
   object-fit: cover;
 }
 
-/* tiny phones: tone down hover so it doesn't overflow */
+/*  phones: tone down hover so it doesn't overflow */
 @media (max-width: 420px) {
   .choice:hover {
     transform: scale(1.03);
   }
 }
 
-/* ---------- Scoreboard ---------- */
+/*  Scoreboard */
 .score-board {
   display: flex;
   justify-content: center;
@@ -111,7 +110,7 @@ h1 {
   color: #555;
 }
 
-/* ---------- Message ---------- */
+/*  Message */
 .msg-container {
   margin-top: 2.5rem;
 }
@@ -141,7 +140,6 @@ h1 {
   }
 }
 
-/* outcome-specific (high specificity to override base) */
 #msg.msg-win {
   background-color: #d1fae5;
   color: #065f46;
@@ -155,7 +153,6 @@ h1 {
   color: #78350f;
 }
 
-/* ---------- Responsive tweaks (stack scoreboard only) ---------- */
 @media (max-width: 600px) {
   .score-board {
     flex-direction: column;
