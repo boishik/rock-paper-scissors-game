@@ -1,3 +1,4 @@
+/* ---------- Base ---------- */
 * {
   margin: 0;
   padding: 0;
@@ -22,7 +23,7 @@ body {
   }
 }
 
-/* Title */
+/* ---------- Title ---------- */
 h1 {
   background-color: #081b31;
   color: #fff;
@@ -30,49 +31,64 @@ h1 {
   line-height: 5rem;
 }
 
-/* Choices */
+/* ---------- Choices (always one row) ---------- */
 .choices {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: clamp(2rem, 4vw, 3rem);
+  flex-wrap: nowrap; /* never wrap */
+  gap: clamp(8px, 4vw, 24px);
+  padding-inline: clamp(8px, 4vw, 24px);
   margin-top: 3rem;
 }
+
 .choice {
-  height: clamp(140px, 18vmin, 170px);
-  width: clamp(140px, 18vmin, 170px);
+  flex: 0 0 auto;
+  width: clamp(76px, 26vw, 170px); /* auto-shrink on phones */
+  height: clamp(76px, 26vw, 170px);
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(6px);
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
   cursor: pointer;
+  border: 5px solid transparent;
+  transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
+
 .choice:hover {
   transform: translateY(-5px) scale(1.05);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  border-color: #dbe2e6; /* soft blue hover border */
 }
 .choice:active {
   transform: scale(0.98);
 }
 
-img {
-  height: 150px;
-  width: 150px;
-  object-fit: cover;
+.choice > img {
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
+  object-fit: cover;
 }
 
-/* Scoreboard */
+/* tiny phones: tone down hover so it doesn't overflow */
+@media (max-width: 420px) {
+  .choice:hover {
+    transform: scale(1.03);
+  }
+}
+
+/* ---------- Scoreboard ---------- */
 .score-board {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: clamp(2rem, 4vw, 5rem);
+  gap: clamp(1.5rem, 4vw, 5rem);
   margin-top: 2rem;
 }
+
 .score {
   width: 160px;
   height: 120px;
@@ -95,10 +111,11 @@ img {
   color: #555;
 }
 
-/* Message */
+/* ---------- Message ---------- */
 .msg-container {
   margin-top: 2.5rem;
 }
+
 #msg {
   display: inline-flex;
   align-items: center;
@@ -124,7 +141,7 @@ img {
   }
 }
 
-/* Outcome-specific (high specificity so they override base) */
+/* outcome-specific (high specificity to override base) */
 #msg.msg-win {
   background-color: #d1fae5;
   color: #065f46;
@@ -138,29 +155,16 @@ img {
   color: #78350f;
 }
 
-/* Responsive tweaks */
+/* ---------- Responsive tweaks (stack scoreboard only) ---------- */
 @media (max-width: 600px) {
-  .choices {
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-  .choice {
-    width: 120px;
-    height: 120px;
-  }
-  img {
-    width: 120px;
-    height: 120px;
-  }
   .score-board {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
   #msg {
     font-size: 1.25rem;
     padding: 0.75rem 1rem;
-    max-width: 90%;
+    max-width: 92%;
     word-wrap: break-word;
   }
 }
